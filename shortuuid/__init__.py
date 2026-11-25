@@ -16,3 +16,9 @@ __all__ = [
     "ShortUUID",
     "uuid",
 ]
+
+def prefixed_uuid(prefix: str) -> str:
+    """Generate a short UUID with an ASCII alphanumeric prefix."""
+    if not prefix.isascii() or not prefix.isalnum():
+        raise ValueError("Prefix must contain only ASCII letters and digits.")
+    return f"{prefix}-{uuid()}"
